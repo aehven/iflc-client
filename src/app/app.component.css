@@ -1,0 +1,59 @@
+.jumbotron {
+  padding: 5px 15px;
+}
+
+.error {
+  color: red;
+}
+
+.account {
+  color: white;
+  background-color: #694796;
+}
+
+.account a {
+  color: cyan;
+}
+
+.contact {
+  color: white;
+  background-color: #F37B36;
+}
+
+.contact a {
+  color: lightblue;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.accomplished {
+  animation: accomplished 1s steps(1, start) 2;
+  -webkit-animation: accomplished 1s steps(2, start) 2;
+}
+@keyframes accomplished {
+  to {
+    background-color: green;
+  }
+}
+@-webkit-keyframes accomplished {
+  to {
+    background-color: inherit;
+  }
+}
+
+.failed {
+  animation: failed 1s steps(1, start) 2;
+  -webkit-animation: failed 1s steps(2, start) 2;
+}
+@keyframes failed {
+  to {
+    background-color: red;
+  }
+}
+@-webkit-keyframes failed {
+  to {
+    background-color: inherit;
+  }
+}

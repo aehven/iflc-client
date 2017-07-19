@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8 col-sm-7 col-md-4 col-lg-3">
+      <div class="jumbotron">
+        <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+          <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
+            <label id="email-label">Email:</label>
+            <input name='email' class="form-control" type="text" [formControl]="complexForm.controls['email']">
+            <div *ngIf="complexForm.controls['email'].hasError('required') && complexForm.controls['email'].touched" class="alert alert-danger">Email is required.</div>
+          </div>
+          <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid && complexForm.controls['password'].touched}">
+            <label id="password-label">Password:</label>
+            <input name='password' class="form-control" type="password" [formControl]="complexForm.controls['password']">
+            <div *ngIf="complexForm.controls['password'].hasError('required') && complexForm.controls['password'].touched" class="alert alert-danger">password is required.</div>
+          </div>
+          <div class="form-group">
+            <div class="row justify-content-center">
+              <button id='submit-button' type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">
+                <i class="fa fa-sign-in fa-1.5x"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<img src='assets/CRM-Icon.png' style="opacity: 1; z-index: 0; margin-left:auto; margin-right:auto; width:100%">

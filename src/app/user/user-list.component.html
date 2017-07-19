@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Users <span style="font-size:60%">({{collectionSize}})</span></h2>
+    </div>
+  </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-xs-auto">
+              <a *ngIf="tokenService?.currentUserData && tokenService.currentUserData['role'] == 'admin'"
+                      class="btn btn-primary"
+                      routerLink="/user/new"
+                      >
+                      New User
+              </a>
+            </div>
+            <div class="col">
+              <input class="form-control" placeholder="Search" [(ngModel)]="search" [formControl]="searchControl"/>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped">
+          <tbody>
+            <tr *ngFor="let item of data">
+                <td><a routerLink="/user/{{item.id}}">{{item.first_name}} {{item.last_name}}</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="collectionSize > pageSize" class="card-footer">
+          <ngb-pagination
+            [collectionSize]="collectionSize"
+            [pageSize]="pageSize"
+            [(page)]="page"
+            (pageChange)="pageChanged($event)"
+            [maxSize]=2
+            size="sm"
+            >
+          </ngb-pagination>
+        </div>
+      </div>
+</div>

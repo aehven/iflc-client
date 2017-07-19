@@ -1,0 +1,32 @@
+<div class="row" style="margin-bottom: 2em">
+  <div class="col-lg-4"  style="margin-bottom: 0.5em">
+    <form *ngIf="activity.date.year > 1970" class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input value={{formatDate()}} readonly style="max-width:10em">
+          <!--
+          ndbDatePicker insists on an ugly date format;
+          we had that ugly input below and show instead
+          a formatted readonly one above.
+           -->
+          <input class="form-control" style="display:none"
+                 name="dp"
+                 [(ngModel)]="activity.date"
+                 (ngModelChange)="dateChanged($event)"
+                 ngbDatepicker #d="ngbDatepicker">
+
+          <div class="input-group-addon" (click)="d.toggle()" >
+            <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div *ngIf="activity.date.year <= 1970">
+      <em>Legacy</em>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <i id="spinner_{{activity.id||'null'}}" class="fa fa-spinner fa-spin hidden" style="float:right"></i>
+    <textarea [readonly]="activity.date.year <= 1970" class="form-control" autosize style="width:90%; max-width:90%" [(ngModel)]="activity.text" [formControl]="textControl"></textarea>
+  </div>
+</div>

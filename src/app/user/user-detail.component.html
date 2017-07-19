@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-7 col-md-6 col-lg-5">
+      <div class="card card-block">
+          <form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
+          <div class="form-group" [ngClass]="{'has-error':!form.controls['first_name'].valid && form.controls['first_name'].touched}">
+            <label>First name:</label>
+            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='first_name'>
+            <div *ngIf="form.controls['first_name'].hasError('required') && form.controls['first_name'].touched" class="error">First name is required.</div>
+          </div>
+          <div class="form-group" [ngClass]="{'has-error':!form.controls['last_name'].valid && form.controls['last_name'].touched}">
+            <label>Last name:</label>
+            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='last_name'>
+            <div *ngIf="form.controls['last_name'].hasError('required') && form.controls['last_name'].touched" class="error">Last name is required.</div>
+          </div>
+          <div class="form-group" [ngClass]="{'has-error':!form.controls['phone'].valid && form.controls['phone'].touched}">
+            <label><a href="tel:{{dataService.current['user']?.phone}}"><i class="fa fa-phone" aria-hidden="true"></i></a> Phone:</label>
+            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='phone'>
+          </div>
+          <div class="form-group" [ngClass]="{'has-error':!form.controls['address'].valid && form.controls['address'].touched}">
+            <label><a href="" (click)="openMap()"><i class="fa fa-map-marker" aria-hidden="true"></i></a> Address:</label>
+            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='address'>
+          </div>
+          <div class="form-group" [ngClass]="{'has-error':!form.controls['email'].valid && form.controls['email'].touched}">
+            <label><a href="mailto:{{dataService.current['user']?.email}}" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a> Email:</label>
+            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='email'>
+            <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="error">Email is required.</div>
+            <div *ngIf="form.controls['email'].hasError('mailFormat') && form.controls['email'].touched" class="error">Invalid email.</div>
+          </div>
+          <div *ngIf="tokenService?.currentUserData && tokenService?.currentUserData['role'] == 'admin'" class="form-group" [ngClass]="{'has-error':!form.controls['role'].valid && form.controls['role'].touched}">
+            <label>Role:</label>
+            <select id="roleSelect" formControlName="role" class="form-control input-lg">
+              <option value="regular">Regular</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <div *ngIf="!isReadOnly">
+            <div class="form-group" [ngClass]="{'has-error':!form.controls['password'].valid && form.controls['password'].touched}">
+              <label>Password:</label>
+              <input [readonly]="isReadOnly" class="form-control" type="password" formControlName='password'>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error':!form.controls['confirmPassword'].valid && form.controls['confirmPassword'].touched}">
+              <label>Confirm password:</label>
+              <input [readonly]="isReadOnly" class="form-control" type="password" formControlName='confirmPassword'>
+              <div *ngIf="form.hasError('mismatchedPasswords') && (form.controls['password'].touched || form.controls['confirmPassword'].touched)" class="error">Passwords don't match.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button
+              *ngIf="!isReadOnly"
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!form.valid"
+            >
+              Submit
+            </button>
+
+            <button
+              *ngIf="isReadOnly"
+              class="btn btn-primary"
+              (click)="enableForm()"
+            >
+              Edit
+            </button>
+
+            <button
+              *ngIf="!isReadOnly"
+              class="btn btn-primary"
+              (click)="disableForm()"
+            >
+              Cancel
+            </button>
+
+            <a
+              href=""
+              *ngIf="isReadOnly && tokenService?.currentUserData && tokenService?.currentUserData['role'] == 'admin'"
+              class="btn btn-danger"
+              mwlConfirmationPopover
+              [title]="title"
+              (confirm)="delete()"
+              (click)="false;"
+            >
+              Delete User
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="card contact" style="padding: 0.5em">
+    <div class="row">
+      <div class="col">
+        <h2>Contacts <span style="font-size:60%">({{collectionSize}})</span>
+          <span *ngIf="accountId"> for
+            <a routerLink="/account/{{dataService.current['account']?.id}}">
+              {{dataService.current['account']?.name}}
+            </a>
+          </span>
+        </h2>
+      </div>
+    </div>
+  </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-xs-auto">
+              <a *ngIf="accountId"
+                      class="btn btn-primary"
+                      routerLink="/contact/new"
+                      >
+                      New Contact
+              </a>
+            </div>
+            <div class="col">
+              <input class="form-control" placeholder="Search" [(ngModel)]="search" [formControl]="searchControl"/>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped">
+          <tbody>
+            <tr *ngFor="let item of data">
+              <td><a routerLink="/contact/{{item.id}}">{{item.last_name + ", " + item.first_name}}</a></td>
+              <td *ngIf="!accountId"><a routerLink="/account/{{item.account_id}}">{{item.account_name}}</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="collectionSize > pageSize" class="card-footer">
+          <ngb-pagination
+            [collectionSize]="collectionSize"
+            [pageSize]="pageSize"
+            [(page)]="page"
+            (pageChange)="pageChanged($event)"
+            [maxSize]=2
+            size="sm"
+            >
+          </ngb-pagination>
+        </div>
+      </div>
+</div>

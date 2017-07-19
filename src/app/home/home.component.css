@@ -1,0 +1,25 @@
+.btn {
+  border-radius: 0 !important;
+}
+
+div.head {
+  height: 15;
+  cursor: auto;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+div.opt {
+  height: 40vh;
+  cursor: pointer;
+}
+
+div.opt button {
+  height: 100%;
+  color: white;
+}
+
+div.opt i {
+  vertical-align: middle;
+  margin: 0 0.5em;
+}

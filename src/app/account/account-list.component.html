@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="card account" style="padding: 0.5em">
+    <div class="row">
+      <div class="col">
+        <h2>Accounts <span style="font-size:60%">({{collectionSize}})</span>
+          <input type="button" id="exportButton" class="btn btn-secondary btn-sm hidden-sm-down" style="float:right" value="Export to Excel" (click)="exportClick($event)">
+        </h2>
+        <input id="favorites-only" type="checkbox" [checked]="favoritesOnly" (change)="favoritesOnlyChange($event)">
+        <label for="favorites-only">Show Favorites Only</label>
+      </div>
+    </div>
+  </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-xs-auto">
+              <a *ngIf="tokenService && tokenService.currentUserData && tokenService.currentUserData['role'] == 'admin'"
+                      class="btn btn-primary"
+                      routerLink="/account/new"                      >
+                      New Account
+              </a>
+            </div>
+            <div class="col">
+              <input class="form-control" placeholder="Search" [(ngModel)]="search" [formControl]="searchControl"/>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped">
+          <tbody>
+            <tr *ngFor="let item of data">
+              <td><a routerLink="/account/{{item.id}}">{{item.name}}</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="collectionSize > pageSize" class="card-footer">
+          <ngb-pagination
+            [collectionSize]="collectionSize"
+            [pageSize]="pageSize"
+            [(page)]="page"
+            (pageChange)="pageChanged($event)"
+            [maxSize]=2
+            size="sm"
+            >
+          </ngb-pagination>
+        </div>
+      </div>
+</div>
