@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  apiPath: "http://silversurfer.local:3000",
+  apiPath: "http://192.168.2.10:3000",
   demoUser: "a2@null.com",
   demoPassword: "password"
 };
