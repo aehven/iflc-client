@@ -1,28 +1,28 @@
 import {} from 'jasmine'; //this is only necessary to silence errors in Atom; ng does this automatically.
 import { LoginPage } from './login.po';
 import { Menu } from './menu.po';
-import { AccountsPage } from './accounts.po';
+import { CeesPage } from './cees.po';
 
 describe('Menu', function() {
   let loginPage: LoginPage;
   let menu: Menu;
-  let accountsPage: AccountsPage;
+  let ceesPage: CeesPage;
 
   beforeEach(() => {
     loginPage = new LoginPage();
     menu = new Menu();
-    accountsPage = new AccountsPage();
+    ceesPage = new CeesPage();
     loginPage.navigateTo();
     loginPage.logIn("a0@null.com", "password");
-    menu.getAccountsLink().click();
+    menu.getCeesLink().click();
   });
 
   afterEach(() => {
     menu.getLogOutLink().click();
   });
 
-  it('should show a list of accounts', () => {
-    expect(accountsPage.getTitle()).toBe('Accounts (5)');
-    expect(accountsPage.getRows().count()).toBe(5);
+  it('should show a list of cees', () => {
+    expect(ceesPage.getTitle()).toBe('Cees (5)');
+    expect(ceesPage.getRows().count()).toBe(5);
   })
 })

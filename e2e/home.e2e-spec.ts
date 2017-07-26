@@ -21,17 +21,17 @@ describe('Home page', function() {
     loginPage.logOut();
   })
 
-  it('should have an account button', () => {
-    expect(page.getAccountButton()).toBeTruthy();
+  it('should have an cee button', () => {
+    expect(page.getCeeButton()).toBeTruthy();
 
-    page.getAccountButton().click();
-    expect(browser.getCurrentUrl()).toMatch(".*accounts");
+    page.getCeeButton().click();
+    expect(browser.getCurrentUrl()).toMatch(".*cees");
   });
 
-  it('should have a contact button', () => {
-    expect(page.getContactButton()).toBeTruthy();
+  it('should have a flavor button', () => {
+    expect(page.getFlavorButton()).toBeTruthy();
 
-    page.getContactButton().click();
-    expect(browser.getCurrentUrl()).toMatch(".*contacts");
+    page.getFlavorButton().click();
+    expect(browser.getCurrentUrl()).toMatch(".*flavors");
   });
 });

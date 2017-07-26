@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="card account" style="padding: 1em; margin-bottom: 1em">
+  <div class="card cee" style="padding: 1em; margin-bottom: 1em">
     <div class="row">
       <div class="col">
         <h2>
-          Activity <span style="font-size:60%">({{collectionSize}})</span>
-          <span *ngIf="accountId"> for
-            <a id="account-link" routerLink="/account/{{dataService.current['account']?.id}}">
-              {{dataService.current['account']?.name}}
+          Note <span style="font-size:60%">({{collectionSize}})</span>
+          <span *ngIf="ceeId"> for
+            <a id="cee-link" routerLink="/cee/{{dataService.current['cee']?.id}}">
+              {{dataService.current['cee']?.name}}
             </a>
           </span>
         </h2>
@@ -15,7 +15,7 @@
   </div>
 
   <div *ngFor="let item of data">
-    <activity-detail [activity]="item"></activity-detail>
+    <note-detail [note]="item"></note-detail>
   </div>
 
   <div *ngIf="collectionSize > pageSize" class="card-footer">

@@ -6,7 +6,7 @@ export class User {
   role: any;
   address: any;
   phone: any;
-  favorite_accounts: any;
+  favorite_cees: any;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);

@@ -1,6 +1,6 @@
 <div class="row" style="margin-bottom: 2em">
   <div class="col-lg-4"  style="margin-bottom: 0.5em">
-    <form *ngIf="activity.date.year > 1970" class="form-inline">
+    <form *ngIf="note.date.year > 1970" class="form-inline">
       <div class="form-group">
         <div class="input-group">
           <input value={{formatDate()}} readonly style="max-width:10em">
@@ -11,7 +11,7 @@
            -->
           <input class="form-control" style="display:none"
                  name="dp"
-                 [(ngModel)]="activity.date"
+                 [(ngModel)]="note.date"
                  (ngModelChange)="dateChanged($event)"
                  ngbDatepicker #d="ngbDatepicker">
 
@@ -21,12 +21,12 @@
         </div>
       </div>
     </form>
-    <div *ngIf="activity.date.year <= 1970">
+    <div *ngIf="note.date.year <= 1970">
       <em>Legacy</em>
     </div>
   </div>
   <div class="col-lg-8">
-    <i id="spinner_{{activity.id||'null'}}" class="fa fa-spinner fa-spin hidden" style="float:right"></i>
-    <textarea [readonly]="activity.date.year <= 1970" class="form-control" autosize style="width:90%; max-width:90%" [(ngModel)]="activity.text" [formControl]="textControl"></textarea>
+    <i id="spinner_{{note.id||'null'}}" class="fa fa-spinner fa-spin hidden" style="float:right"></i>
+    <textarea [readonly]="note.date.year <= 1970" class="form-control" autosize style="width:90%; max-width:90%" [(ngModel)]="note.text" [formControl]="textControl"></textarea>
   </div>
 </div>

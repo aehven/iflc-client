@@ -1,9 +1,9 @@
-export class Contact {
+export class Flavor {
   id: number;
   first_name: string;
   last_name: string;
-  account_name: string;
-  account_id: number;
+  cee_name: string;
+  cee_id: number;
   ma: string;
   phone: string;
   cellphone: string;

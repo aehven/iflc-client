@@ -1,17 +1,17 @@
 import { browser, element, by } from 'protractor';
 
-export class ActivitiesPage {
+export class NotesPage {
 
-  navigateTo(accountId) {
-    return browser.get('/activities/'+accountId);
+  navigateTo(ceeId) {
+    return browser.get('/notes/'+ceeId);
   }
 
   getTitle() {
     return element(by.tagName('h2')).getText();
   }
 
-  getAccountLink() {
-    return element(by.id('account-link'));
+  getCeeLink() {
+    return element(by.id('cee-link'));
   }
 
   getTextAreas() {

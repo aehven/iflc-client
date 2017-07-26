@@ -7,15 +7,15 @@ import {Location} from '@angular/common';
 
 import { Angular2TokenService } from 'angular2-token';
 
-import { Contact } from './contact';
+import { Flavor } from './flavor';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'contact-list',
-  templateUrl: './contact-list.component.html',
-  styleUrls: ['../app.component.css', './contact.css']
+  selector: 'flavor-list',
+  templateUrl: './flavor-list.component.html',
+  styleUrls: ['../app.component.css', './flavor.css']
 })
-export class ContactListComponent implements OnInit {
+export class FlavorListComponent implements OnInit {
   public data;
   public sortBy = "email";
   public sortOrder = "asc";
@@ -26,7 +26,7 @@ export class ContactListComponent implements OnInit {
   public collectionSize = 1;
   public page = 1;
   public pageSize = 15;
-  public accountId = null;
+  public ceeId = null;
 
   constructor(public tokenService: Angular2TokenService,
     public dataService: DataService,
@@ -35,7 +35,7 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.accountId = params['account_id'];
+      this.ceeId = params['cee_id'];
       this.getIndex();
     });
 
@@ -56,10 +56,10 @@ export class ContactListComponent implements OnInit {
   }
 
   public getIndex() {
-    this.dataService.index("contact", {account_id: this.accountId, per_page: this.pageSize, page: this.page, search: this.search})
+    this.dataService.index("flavor", {cee_id: this.ceeId, per_page: this.pageSize, page: this.page, search: this.search})
     .subscribe( data => {
       let json = data.json();
-      this.data = json.contacts;
+      this.data = json.flavors;
       this.collectionSize = json.count
     });
   }

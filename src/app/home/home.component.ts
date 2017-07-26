@@ -16,13 +16,13 @@ export class HomeComponent implements AfterViewInit {
     this.router.navigate([localStorage.getItem('location')]);
   }
 
-  accounts(): void {
-    console.log("Accounts");
-    this.router.navigate(['/accounts']);
+  cees(): void {
+    console.log("Cees");
+    this.router.navigate(['/cees']);
   }
 
-  contacts(): void {
-    console.log("Contacts");
-    this.router.navigate(['/contacts']);
+  flavors(): void {
+    console.log("Flavors");
+    this.router.navigate(['/flavors']);
   }
 }

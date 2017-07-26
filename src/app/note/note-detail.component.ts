@@ -4,15 +4,15 @@ import { FormControl } from '@angular/forms';
 import { Angular2TokenService } from 'angular2-token';
 
 import { DataService } from '../data.service';
-import { Activity } from './activity';
+import { Note } from './note';
 
 @Component({
-  selector: 'activity-detail',
-  templateUrl: './activity-detail.component.html',
+  selector: 'note-detail',
+  templateUrl: './note-detail.component.html',
   styleUrls: ['../app.component.css']
 })
-export class ActivityDetailComponent implements AfterViewInit {
-  @Input() activity: Activity;
+export class NoteDetailComponent implements AfterViewInit {
+  @Input() note: Note;
 
   public textControl = new FormControl();
 
@@ -36,9 +36,9 @@ export class ActivityDetailComponent implements AfterViewInit {
       "November", "December"
     ];
 
-    var day = this.activity.date.day;
-    var monthIndex = this.activity.date.month;
-    var year = this.activity.date.year;
+    var day = this.note.date.day;
+    var monthIndex = this.note.date.month;
+    var year = this.note.date.year;
 
     return monthNames[monthIndex-1] + " " + day + ", " + year;
   }
@@ -48,22 +48,22 @@ export class ActivityDetailComponent implements AfterViewInit {
   }
 
   send(): void {
-    let s = document.getElementById("spinner_" + this.activity.id);
+    let s = document.getElementById("spinner_" + this.note.id);
     s.classList.remove("hidden");
 
-    if(this.activity.id) {
-      this.dataService.update("activity", this.activity.id, this.activity, {suppressNotification: true}).subscribe(
+    if(this.note.id) {
+      this.dataService.update("note", this.note.id, this.note, {suppressNotification: true}).subscribe(
         res =>      {
           s.classList.add("hidden");
         }
       );
     }
     else {
-      if(this.activity.text){
-        this.dataService.create("activity", this.activity, {suppressNotification: true}).subscribe(
+      if(this.note.text){
+        this.dataService.create("note", this.note, {suppressNotification: true}).subscribe(
           res =>      {
             s.classList.add("hidden");
-            this.activity.id = res.json().id;
+            this.note.id = res.json().id;
           }
         );
       }

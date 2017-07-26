@@ -9,17 +9,17 @@ import {Location} from '@angular/common';
 
 import { Angular2TokenService } from 'angular2-token';
 
-import { Account } from './account';
+import { Cee } from './cee';
 import { DataService } from '../data.service';
 
 import * as FileSaver from 'file-saver'; //http://stackoverflow.com/a/41846201
 
 @Component({
-  selector: 'account-list',
-  templateUrl: './account-list.component.html',
-  styleUrls: ['../app.component.css', './account.css']
+  selector: 'cee-list',
+  templateUrl: './cee-list.component.html',
+  styleUrls: ['../app.component.css', './cee.css']
 })
-export class AccountListComponent implements OnInit {
+export class CeeListComponent implements OnInit {
   public data;
   public sortBy = "email";
   public sortOrder = "asc";
@@ -94,7 +94,7 @@ export class AccountListComponent implements OnInit {
   }
 
   public getIndex(): Observable<Response> {
-    let res = this.dataService.index("account", {favorites_only: this.favoritesOnly, export: this.exportExcel, per_page: this.pageSize, page: this.page, search: this.search})
+    let res = this.dataService.index("cee", {favorites_only: this.favoritesOnly, export: this.exportExcel, per_page: this.pageSize, page: this.page, search: this.search})
     res.subscribe(
       data => {
         if(this.exportExcel) {
@@ -102,7 +102,7 @@ export class AccountListComponent implements OnInit {
         }
         else {
           let json = data.json();
-          this.data = json.accounts;
+          this.data = json.cees;
           this.collectionSize = json.count
         }
       },

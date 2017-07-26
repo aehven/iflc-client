@@ -2,11 +2,11 @@
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-8 col-md-7 col-lg-6">
       <div class="card">
-        <div class="card-block account" [ngStyle]="{'min-height.px': 66}">
+        <div class="card-block cee" [ngStyle]="{'min-height.px': 66}">
           <favorite [favoritableId]="id" style="float:right; margin-top: -1em; margin-right: -0.7em"></favorite>
-          <span id='account-name'>{{form.controls['name'].value}}</span> <br />
-          <a id='contacts-link' class="card-link" routerLink="/contacts/{{dataService.current['account']?.id}}">Contacts</a>
-          <a id='activities-link' class="card-link" routerLink="/activities/{{dataService.current['account']?.id}}">Activity</a>
+          <span id='cee-name'>{{form.controls['name'].value}}</span> <br />
+          <a id='flavors-link' class="card-link" routerLink="/flavors/{{dataService.current['cee']?.id}}">Flavors</a>
+          <a id='notes-link' class="card-link" routerLink="/notes/{{dataService.current['cee']?.id}}">Note</a>
         </div>
       </div>
       <div class="card card-block">
@@ -42,7 +42,7 @@
 
 
           <div class="form-group" [ngClass]="{'has-error':!form.controls['phone'].valid && form.controls['phone'].touched}">
-            <label><a href="tel:{{dataService.current['account']?.phone}}"><i class="fa fa-phone" aria-hidden="true"></i> Phone:</a></label>
+            <label><a href="tel:{{dataService.current['cee']?.phone}}"><i class="fa fa-phone" aria-hidden="true"></i> Phone:</a></label>
             <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='phone'>
           </div>
           <div class="form-group" [ngClass]="{'has-error':!form.controls['street'].valid && form.controls['street'].touched}">
@@ -90,7 +90,7 @@
             <input [readonly]="isReadOnly" class="form-control" type="text" [formControl]="form.controls['state']">
           </div> -->
           <!-- <div class="form-group" [ngClass]="{'has-error':!form.controls['email'].valid && form.controls['email'].touched}">
-            <label><a href="mailto:{{dataService.current['account']?.email}}" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Email:</a></label>
+            <label><a href="mailto:{{dataService.current['cee']?.email}}" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Email:</a></label>
             <input [readonly]="isReadOnly" class="form-control" type="text" [formControl]="form.controls['email']">
           </div> -->
 

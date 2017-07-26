@@ -1,6 +1,6 @@
-export class Activity {
+export class Note {
   id: number;
-  account_id: number;
+  cee_id: number;
   date: any;
   text: string;
 

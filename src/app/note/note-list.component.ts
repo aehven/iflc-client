@@ -6,22 +6,22 @@ import {Location} from '@angular/common';
 
 import { Angular2TokenService } from 'angular2-token';
 
-import { Activity } from './activity';
-import { ActivityDetailComponent } from './activity-detail.component';
+import { Note } from './note';
+import { NoteDetailComponent } from './note-detail.component';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'activity-list',
-  templateUrl: './activity-list.component.html',
+  selector: 'note-list',
+  templateUrl: './note-list.component.html',
   styleUrls: ['../app.component.css']
 })
-export class ActivityListComponent implements OnInit {
+export class NoteListComponent implements OnInit {
   public data;
   public search: string;
   public collectionSize = 1;
   public page = 1;
   public pageSize = 5;
-  public accountId = null;
+  public ceeId = null;
 
   constructor(public tokenService: Angular2TokenService,
     public dataService: DataService,
@@ -31,7 +31,7 @@ export class ActivityListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.accountId = params['account_id'];
+      this.ceeId = params['cee_id'];
       this.getIndex();
     });
     localStorage.setItem('location', this.location.path());
@@ -42,10 +42,10 @@ export class ActivityListComponent implements OnInit {
   }
 
   public getIndex() {
-    this.dataService.index("activity", {account_id: this.accountId, per_page: this.pageSize, page: this.page, search: this.search})
+    this.dataService.index("note", {cee_id: this.ceeId, per_page: this.pageSize, page: this.page, search: this.search})
     .subscribe( data => {
       let json = data.json();
-      this.data = json.activities;
+      this.data = json.notes;
       this.collectionSize = json.count
     });
   }

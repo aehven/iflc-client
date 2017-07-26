@@ -30,17 +30,17 @@ export class DataService {
       case 'user':
         return 'users';
 
-      case 'account':
-        return 'accounts'
+      case 'cee':
+        return 'cees'
 
-      case 'contact':
-        return 'contacts'
+      case 'flavor':
+        return 'flavors'
 
       case 'favorite':
         return 'favorites'
 
-      case 'activity':
-        return 'activities'
+      case 'note':
+        return 'notes'
 
       default:
         return null;

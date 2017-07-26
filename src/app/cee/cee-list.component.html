@@ -1,14 +1,12 @@
 <div class="container">
-  <div class="card contact" style="padding: 0.5em">
+  <div class="card cee" style="padding: 0.5em">
     <div class="row">
       <div class="col">
-        <h2>Contacts <span style="font-size:60%">({{collectionSize}})</span>
-          <span *ngIf="accountId"> for
-            <a routerLink="/account/{{dataService.current['account']?.id}}">
-              {{dataService.current['account']?.name}}
-            </a>
-          </span>
+        <h2>Cees <span style="font-size:60%">({{collectionSize}})</span>
+          <input type="button" id="exportButton" class="btn btn-secondary btn-sm hidden-sm-down" style="float:right" value="Export to Excel" (click)="exportClick($event)">
         </h2>
+        <input id="favorites-only" type="checkbox" [checked]="favoritesOnly" (change)="favoritesOnlyChange($event)">
+        <label for="favorites-only">Show Favorites Only</label>
       </div>
     </div>
   </div>
@@ -16,11 +14,10 @@
         <div class="card-header">
           <div class="row">
             <div class="col-xs-auto">
-              <a *ngIf="accountId"
+              <a *ngIf="tokenService && tokenService.currentUserData && tokenService.currentUserData['role'] == 'admin'"
                       class="btn btn-primary"
-                      routerLink="/contact/new"
-                      >
-                      New Contact
+                      routerLink="/cee/new"                      >
+                      New Cee
               </a>
             </div>
             <div class="col">
@@ -31,8 +28,7 @@
         <table class="table table-striped">
           <tbody>
             <tr *ngFor="let item of data">
-              <td><a routerLink="/contact/{{item.id}}">{{item.last_name + ", " + item.first_name}}</a></td>
-              <td *ngIf="!accountId"><a routerLink="/account/{{item.account_id}}">{{item.account_name}}</a></td>
+              <td><a routerLink="/cee/{{item.id}}">{{item.name}}</a></td>
             </tr>
           </tbody>
         </table>

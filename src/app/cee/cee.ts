@@ -1,4 +1,4 @@
-export class Account {
+export class Cee {
   id: number;
   name: string
   phone: string;

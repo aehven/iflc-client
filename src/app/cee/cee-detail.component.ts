@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Rx';
 import {Angular2TokenService} from 'angular2-token';
 import {NotificationsService} from 'angular2-notifications';
 
-import { Account } from './account';
+import { Cee } from './cee';
 import { Favorite } from '../favorite/favorite'
 import { FavoriteComponent } from '../favorite/favorite.component';
 import {DataService} from '../data.service';
@@ -16,16 +16,16 @@ import {DataService} from '../data.service';
 import {MyValidators} from '../shared/my-validators';
 
 @Component({
-  selector: 'account-detail',
-  templateUrl: './account-detail.component.html',
-  styleUrls: ['../app.component.css', './account.css']
+  selector: 'cee-detail',
+  templateUrl: './cee-detail.component.html',
+  styleUrls: ['../app.component.css', './cee.css']
 })
-export class AccountDetailComponent implements OnInit {
+export class CeeDetailComponent implements OnInit {
   public component = this;
   public form : FormGroup;
   public isReadOnly:boolean=true;
 
-  public title: string = 'Really delete this account?';
+  public title: string = 'Really delete this cee?';
   public confirmClicked: boolean = false;
   public cancelClicked: boolean = false;
 
@@ -59,21 +59,21 @@ export class AccountDetailComponent implements OnInit {
               }
 
   ngOnInit() {
-    this.getAccount();
+    this.getCee();
     document.getElementById('top').scrollIntoView(true)
     localStorage.setItem('location', this.location.path());
   }
 
-  getAccount():void {
+  getCee():void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
       if(this.id == "new") {
         this.enableForm();
       }
       else {
-        this.dataService.show("account", + this.id)
+        this.dataService.show("cee", + this.id)
         .subscribe( data => {
-          this.form.patchValue(this.dataService.current["account"]);
+          this.form.patchValue(this.dataService.current["cee"]);
           this.disableForm();
         })
       }
@@ -82,7 +82,7 @@ export class AccountDetailComponent implements OnInit {
 
   submitForm(values): void {
     if(this.id == "new") {
-      this.dataService.create("account", values).subscribe(
+      this.dataService.create("cee", values).subscribe(
         res =>      {
           this.disableForm();
           this.id = res.json().id;
@@ -90,7 +90,7 @@ export class AccountDetailComponent implements OnInit {
       );
     }
     else {
-      this.dataService.update("account", this.id, values).subscribe(
+      this.dataService.update("cee", this.id, values).subscribe(
         res =>      {
           this.disableForm();
         }
@@ -99,10 +99,10 @@ export class AccountDetailComponent implements OnInit {
   }
 
   delete(): void {
-    this.dataService.delete("account", this.id)
+    this.dataService.delete("cee", this.id)
     .subscribe(
       res => {
-        this.router.navigate(['/accounts']);
+        this.router.navigate(['/cees']);
       });
   }
 
@@ -111,7 +111,7 @@ export class AccountDetailComponent implements OnInit {
     let q = this.form.controls['street'].value + ", " + this.form.controls['city'].value + " " + this.form.controls['zip'].value;
     window.open('http://maps.google.com?q='+q);
     // this isn't necessary if open maps in new tab with address query
-    // window.open('http://maps.google.com/maps?z=10&t=m&q=loc:'+this.account.latitude+'+'+this.account.longitude);
+    // window.open('http://maps.google.com/maps?z=10&t=m&q=loc:'+this.cee.latitude+'+'+this.cee.longitude);
     return false;
   }
 

@@ -15,8 +15,8 @@ describe('Menu', function() {
   it('should have only reload link when not logged in', () => {
     expect(menu.getReloadLink().isPresent()).toBeTruthy();
     expect(menu.getUsersLink().isPresent()).toBeFalsy();
-    expect(menu.getAccountsLink().isPresent()).toBeFalsy();
-    expect(menu.getContactsLink().isPresent()).toBeFalsy();
+    expect(menu.getCeesLink().isPresent()).toBeFalsy();
+    expect(menu.getFlavorsLink().isPresent()).toBeFalsy();
     expect(menu.getProfileLink().isPresent()).toBeFalsy();
     expect(menu.getLogOutLink().isPresent()).toBeFalsy();
   });
@@ -25,8 +25,8 @@ describe('Menu', function() {
     loginPage.logIn("a0@null.com", "password");
     expect(menu.getReloadLink().isPresent()).toBeTruthy();
     expect(menu.getUsersLink().isPresent()).toBeTruthy();
-    expect(menu.getAccountsLink().isPresent()).toBeTruthy();
-    expect(menu.getContactsLink().isPresent()).toBeTruthy();
+    expect(menu.getCeesLink().isPresent()).toBeTruthy();
+    expect(menu.getFlavorsLink().isPresent()).toBeTruthy();
     expect(menu.getProfileLink().isPresent()).toBeTruthy();
     expect(menu.getLogOutLink().isPresent()).toBeTruthy();
     menu.getLogOutLink().click();
@@ -36,8 +36,8 @@ describe('Menu', function() {
     loginPage.logIn("r0@null.com", "password");
     expect(menu.getReloadLink().isPresent()).toBeTruthy();
     expect(menu.getUsersLink().isPresent()).toBeFalsy();
-    expect(menu.getAccountsLink().isPresent()).toBeTruthy();
-    expect(menu.getContactsLink().isPresent()).toBeTruthy();
+    expect(menu.getCeesLink().isPresent()).toBeTruthy();
+    expect(menu.getFlavorsLink().isPresent()).toBeTruthy();
     expect(menu.getProfileLink().isPresent()).toBeTruthy();
     expect(menu.getLogOutLink().isPresent()).toBeTruthy();
     menu.getLogOutLink().click();

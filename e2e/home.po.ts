@@ -5,11 +5,11 @@ export class HomePage {
     return browser.get('/home');
   }
 
-  getAccountButton() {
-    return element(by.id('account-button'));
+  getCeeButton() {
+    return element(by.id('cee-button'));
   }
 
-  getContactButton() {
-    return element(by.id('contact-button'));
+  getFlavorButton() {
+    return element(by.id('flavor-button'));
   }
 }

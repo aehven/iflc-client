@@ -43,7 +43,7 @@ describe('Profile page', function() {
     profilePage.submit();
     browser.sleep(6000);
 
-    menu.getContactsLink().click();
+    menu.getFlavorsLink().click();
     menu.getProfileLink().click();
 
     expect(profilePage.getInputValue('first_name')).toContain('regina');

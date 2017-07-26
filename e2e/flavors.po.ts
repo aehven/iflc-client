@@ -1,9 +1,11 @@
 import { browser, element, by } from 'protractor';
 import { TablePage } from './table.po'
 
-export class AccountsPage extends TablePage {
-  navigateTo() {
-    return browser.get('/accounts');
+export class FlavorsPage extends TablePage {
+  constructor() { super(); }
+
+  navigateTo(ceeId) {
+    return browser.get('/flavors/' + ceeId);
   }
 
   getTitle() {

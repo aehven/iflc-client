@@ -5,12 +5,12 @@ export class Menu {
     return element(by.id('menu-users'));
   }
 
-  getAccountsLink() {
-    return element(by.id('menu-accounts'));
+  getCeesLink() {
+    return element(by.id('menu-cees'));
   }
 
-  getContactsLink() {
-    return element(by.id('menu-contacts'));
+  getFlavorsLink() {
+    return element(by.id('menu-flavors'));
   }
 
   getProfileLink() {

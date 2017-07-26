@@ -12,10 +12,10 @@ import { Favorite } from './favorite';
    span {
      cursor: pointer;
    }
-   :host-context(.account) i {
+   :host-context(.cee) i {
      color: orange;
    }
-   :host-context(.contact) i {
+   :host-context(.flavor) i {
      color: blue;
    }
   </style>
@@ -42,7 +42,7 @@ export class FavoriteComponent implements AfterViewInit {
   getFavorite():void {
     this.dataService.index("favorite", {
        favoritable_id: this.favoritableId,
-       favoritable_type: "Account"
+       favoritable_type: "Cee"
     })
     .subscribe( data => {
         this.favorite = data.json() as Favorite;
@@ -64,8 +64,8 @@ export class FavoriteComponent implements AfterViewInit {
     else {
       this.dataService.create("favorite",
         {
-          favoritable_id: this.dataService.current['account'].id,
-          favoritable_type: "Account"
+          favoritable_id: this.dataService.current['cee'].id,
+          favoritable_type: "Cee"
         },
         {suppressNotification: true}
       ).subscribe(
