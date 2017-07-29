@@ -20,10 +20,7 @@
           <div class="form-group" [ngClass]="{'has-error':!form.controls['form'].valid && form.controls['form'].touched}">
             <label>Form:</label>
             <select id="formSelect" formControlName="form" class="form-control input-lg">
-              <option value="MA">MA</option>
-              <option value="Provider">Provider (MD, PA, NP)</option>
-              <option value="RC">RC</option>
-              <option value="FD">FD</option>
+              <option *ngFor="let ceeForm of ceeForms" [ngValue]="ceeForm">{{ceeForm}}</option>
             </select>
           </div>
 

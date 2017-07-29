@@ -31,6 +31,8 @@ export class CeeDetailComponent implements OnInit {
 
   public id;
   public timerSubscription;
+  
+  public ceeForms;
 
   constructor(public tokenService: Angular2TokenService,
               public dataService: DataService,
@@ -50,6 +52,7 @@ export class CeeDetailComponent implements OnInit {
     this.getCee();
     document.getElementById('top').scrollIntoView(true)
     localStorage.setItem('location', this.location.path());
+    this.ceeForms = localStorage.getItem('ceeForms').split(',');
   }
 
   getCee():void {

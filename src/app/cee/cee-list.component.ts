@@ -33,6 +33,8 @@ export class CeeListComponent implements OnInit {
   public exportExcel = false;
   public favoritesOnly = false;
 
+  public ceeForms = null;
+  
   constructor(public tokenService: Angular2TokenService,
     public dataService: DataService,
     public location: Location,
@@ -98,7 +100,9 @@ export class CeeListComponent implements OnInit {
         else {
           let json = data.json();
           this.data = json.cees;
-          this.collectionSize = json.count
+          this.collectionSize = json.count;
+          localStorage.setItem('ceeForms', json.forms);
+          console.log(localStorage.getItem('ceeForms').split(','));
         }
       },
       error => {
