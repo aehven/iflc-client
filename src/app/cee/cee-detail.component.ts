@@ -32,7 +32,8 @@ export class CeeDetailComponent implements OnInit {
   public id;
   public timerSubscription;
   
-  public ceeForms;
+  public ceeStates;
+  public ceeSources;
 
   constructor(public tokenService: Angular2TokenService,
               public dataService: DataService,
@@ -43,7 +44,7 @@ export class CeeDetailComponent implements OnInit {
               fb: FormBuilder) {
                 this.form = fb.group({
                   'name' : [null, Validators.required],
-                  'form' : null,
+                  'state' : null,
                   'source' : null
                 })
               }
@@ -52,7 +53,8 @@ export class CeeDetailComponent implements OnInit {
     this.getCee();
     document.getElementById('top').scrollIntoView(true)
     localStorage.setItem('location', this.location.path());
-    this.ceeForms = localStorage.getItem('ceeForms').split(',');
+    this.ceeStates = localStorage.getItem('ceeStates').split(',');
+    this.ceeSources = localStorage.getItem('ceeSources').split(',');
   }
 
   getCee():void {

@@ -1,7 +1,7 @@
 export class Cee {
   id: number;
-  name: string
-  form: string;
+  name: string;
+  state: string;
   source: string;
 
   constructor(values: Object = {}) {

@@ -17,20 +17,17 @@
             <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="error">Name is required.</div>
           </div>
 
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['form'].valid && form.controls['form'].touched}">
-            <label>Form:</label>
-            <select id="formSelect" formControlName="form" class="form-control input-lg">
-              <option *ngFor="let ceeForm of ceeForms" [ngValue]="ceeForm">{{ceeForm}}</option>
+          <div class="form-group" [ngClass]="{'has-error':!form.controls['state'].valid && form.controls['state'].touched}">
+            <label>Source:</label>
+            <select id="stateSelect" formControlName="state" class="form-control input-lg">
+              <option *ngFor="let state of ceeStates" [ngValue]="state">{{state}}</option>
             </select>
           </div>
 
           <div class="form-group" [ngClass]="{'has-error':!form.controls['source'].valid && form.controls['source'].touched}">
             <label>Source:</label>
             <select id="sourceSelect" formControlName="source" class="form-control input-lg">
-              <option value="MA">MA</option>
-              <option value="Provider">Provider (MD, PA, NP)</option>
-              <option value="RC">RC</option>
-              <option value="FD">FD</option>
+              <option *ngFor="let source of ceeSources" [ngValue]="source">{{source}}</option>
             </select>
           </div>
 
