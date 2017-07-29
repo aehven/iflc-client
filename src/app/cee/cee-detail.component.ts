@@ -41,20 +41,8 @@ export class CeeDetailComponent implements OnInit {
               fb: FormBuilder) {
                 this.form = fb.group({
                   'name' : [null, Validators.required],
-                  'phone' : null,
-                  'fax' : null,
-                  'email' :  null,
-                  'website' : null,
-                  'city' : null,
-                  'street' : null,
-                  'state' : null,
-                  'zip' : null,
-                  'kind' : null,
-                  'om' : null,
-                  'fd1' : null,
-                  'fd2': null,
-                  'rc': null,
-                  'referrer': null
+                  'form' : null,
+                  'source' : null
                 })
               }
 

@@ -21,7 +21,7 @@ import * as FileSaver from 'file-saver'; //http://stackoverflow.com/a/41846201
 })
 export class CeeListComponent implements OnInit {
   public data;
-  public sortBy = "email";
+  public sortBy = "name";
   public sortOrder = "asc";
 
   public search = null;
@@ -52,7 +52,7 @@ export class CeeListComponent implements OnInit {
         this.getIndex();
     });
 
-    localStorage.setItem('location', this.location.path());    
+    localStorage.setItem('location', this.location.path());
   }
 
   public pageChanged(event) {
@@ -62,11 +62,6 @@ export class CeeListComponent implements OnInit {
   saveDownload(res: Response) : void {
     var blob = new Blob([res.text()], { type: 'application/xls' });
 
-    // default save, random name:
-    // var url= window.URL.createObjectURL(blob);
-    // window.open(url);
-
-    // specify name using saveAs
     FileSaver.saveAs(blob, "report.xls");
   }
 
