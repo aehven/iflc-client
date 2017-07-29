@@ -112,12 +112,12 @@ export class CeeDetailComponent implements OnInit {
     this.isReadOnly = false;
     let timer = Observable.timer(100,100);
     this.timerSubscription = timer.subscribe(t => {
-      var kindSelect = document.getElementById("kindSelect");
-      var referrerSelect = document.getElementById("referrerSelect");
-      if(kindSelect) {
+      var stateSelect = document.getElementById("stateSelect");
+      var sourceSelect = document.getElementById("sourceSelect");
+      if(stateSelect) {
         this.timerSubscription.unsubscribe();
-        kindSelect.removeAttribute("disabled");
-        referrerSelect.removeAttribute("disabled");
+        stateSelect.removeAttribute("disabled");
+        sourceSelect.removeAttribute("disabled");
       }
     });
   }
@@ -127,12 +127,12 @@ export class CeeDetailComponent implements OnInit {
       this.isReadOnly = true;
       let timer = Observable.timer(100,100);
       this.timerSubscription = timer.subscribe(t => {
-        var kindSelect = document.getElementById("kindSelect");
-        var referrerSelect = document.getElementById("referrerSelect");
-        if(kindSelect) {
+        var stateSelect = document.getElementById("stateSelect");
+        var sourceSelect = document.getElementById("sourceSelect");
+        if(stateSelect) {
           this.timerSubscription.unsubscribe();
-          kindSelect.setAttribute("disabled", "disabled");
-          referrerSelect.setAttribute("disabled", "disabled");
+          stateSelect.setAttribute("disabled", "disabled");
+          sourceSelect.setAttribute("disabled", "disabled");
         }
       });
     });
