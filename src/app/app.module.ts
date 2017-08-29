@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { DataService } from './data.service';
 import { AuthGuardService } from './auth-guard.service';
 
+import { BackgroundImage } from './background/background.directive';
 import { UserDetailComponent } from './user/user-detail.component';
 import { UserListComponent } from './user/user-list.component';
 import { CeeDetailComponent } from './cee/cee-detail.component';
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    BackgroundImage,
     UserDetailComponent,
     UserListComponent,
     CeeDetailComponent,
