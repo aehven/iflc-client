@@ -2,3 +2,71 @@
 .btn:hover {
   cursor: pointer
 }
+
+.jumbotron {
+  padding: 5px 5px;
+  margin-top: 2em;
+  background-color: #f7f7f7;
+  opacity: .7;
+}
+
+.error {
+  color: red;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.accomplished {
+  animation: accomplished 1s steps(1, start) 2;
+  -webkit-animation: accomplished 1s steps(2, start) 2;
+}
+@keyframes accomplished {
+  to {
+    background-color: green;
+  }
+}
+@-webkit-keyframes accomplished {
+  to {
+    background-color: inherit;
+  }
+}
+
+.failed {
+  animation: failed 1s steps(1, start) 2;
+  -webkit-animation: failed 1s steps(2, start) 2;
+}
+@keyframes failed {
+  to {
+    background-color: red;
+  }
+}
+@-webkit-keyframes failed {
+  to {
+    background-color: inherit;
+  }
+}
+
+.nav.nav-pills.nav-fill {
+  opacity: .7;
+  background-color:#eee;
+  font-size:120%
+}
+
+.background-image {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+
+  display: block;
+
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+}
