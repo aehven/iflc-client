@@ -54,6 +54,11 @@
   font-size:120%
 }
 
+/*
+  would like to put this in background.component.css and list in
+  directive styleUrls, but this is not supported for directives yet (8/17)
+  https://github.com/angular/angular/issues/17766
+*/
 .background-image {
   position: fixed;
   left: 0;
