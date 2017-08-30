@@ -10,11 +10,11 @@
      <i class="fa fa-building-o"></i>
     </a>
   </li>
-  <li *ngIf="tokenService?.currentUserData" class="nav-item active">
+  <!-- <li *ngIf="tokenService?.currentUserData" class="nav-item active">
     <a id="menu-flavors" class="nav-link" href="" routerLink="/flavors" routerLinkActive="active">
       <i class="fa fa-address-card-o"></i>
     </a>
-  </li>
+  </li> -->
   <li *ngIf="tokenService?.currentUserData" class="nav-item">
     <a id="menu-profile" class="nav-link" href="" routerLink="/user/{{tokenService?.currentUserData?.id}}">
       <i class="fa fa-user-o"></i>
