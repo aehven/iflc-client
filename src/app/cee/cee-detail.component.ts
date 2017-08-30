@@ -31,9 +31,11 @@ export class CeeDetailComponent implements OnInit {
 
   public id;
   public timerSubscription;
-  
+
   public ceeStates;
   public ceeSources;
+
+  public imagePath: string;
 
   constructor(public tokenService: Angular2TokenService,
               public dataService: DataService,
@@ -68,6 +70,7 @@ export class CeeDetailComponent implements OnInit {
         .subscribe( data => {
           this.form.patchValue(this.dataService.current["cee"]);
           this.disableForm();
+          this.imagePath = "/assets/background-" + this.dataService.current["cee"].name.toLowerCase() + ".jpg";
         })
       }
     })

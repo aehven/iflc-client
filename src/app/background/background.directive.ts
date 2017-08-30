@@ -13,7 +13,7 @@ export class BackgroundImage {
 
     @Input('background-image') path: string;
 
-    ngAfterViewInit() {
+    ngOnChanges() {
         this.el.style.backgroundImage = 'url(' + this.path + ')';
     }
 }

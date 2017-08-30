@@ -33,6 +33,8 @@ export class CeeListComponent implements OnInit {
   public exportExcel = false;
   public favoritesOnly = false;
 
+  imagePath = "/assets/coffee cup.jpg";
+
   constructor(public tokenService: Angular2TokenService,
     public dataService: DataService,
     public location: Location,

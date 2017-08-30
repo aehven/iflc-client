@@ -16,7 +16,7 @@ import { DataService } from '../data.service';
 })
 export class LoginComponent  {
   complexForm : FormGroup;
-  imagePath = "/assets/cheese.jpg";
+  public imagePath: string = "/assets/background-coffee.jpg";
 
   constructor(public tokenService: Angular2TokenService,
               fb: FormBuilder, public router: Router,

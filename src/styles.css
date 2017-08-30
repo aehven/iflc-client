@@ -68,6 +68,8 @@
   z-index: -1;
 
   display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
