@@ -19,7 +19,7 @@
           </div>
 
           <div class="form-group" [ngClass]="{'has-error':!form.controls['state'].valid && form.controls['state'].touched}">
-            <label>Source:</label>
+            <label>State:</label>
             <select id="stateSelect" formControlName="state" class="form-control input-lg">
               <option *ngFor="let state of ceeStates" [ngValue]="state">{{state}}</option>
             </select>
