@@ -1,3 +1,7 @@
 #exportButton:disabled {
   cursor: progress !important;
 }
+
+.container {
+  opacity: 0.9;
+}
