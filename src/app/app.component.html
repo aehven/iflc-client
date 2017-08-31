@@ -10,7 +10,7 @@
       <i class="fa fa-birthday-cake"></i>
       <i class="fa fa-coffee"></i>
       <i class="fa fa-beer"></i>
-      ...
+      . . .
     </a>
   </li>
   <!-- <li *ngIf="tokenService?.currentUserData" class="nav-item active">
@@ -19,7 +19,7 @@
     </a>
   </li> -->
   <li *ngIf="tokenService?.currentUserData" class="nav-item">
-    <a id="menu-profile" class="nav-link" href="" routerLink="/user/{{tokenService?.currentUserData?.id}}">
+    <a id="menu-profile" class="nav-link" href="" routerLink="/user/{{tokenService?.currentUserData?.id}}" routerLinkActive="active">
       <i class="fa fa-user-o"></i>
     </a>
   </li>
