@@ -25,11 +25,17 @@
             </select>
           </div>
 
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['source'].valid && form.controls['source'].touched}">
-            <label>Source:</label>
-            <select id="sourceSelect" formControlName="source" class="form-control input-lg">
-              <option *ngFor="let source of ceeSources" [ngValue]="source">{{source}}</option>
-            </select>
+          <!-- Thanks to http://codepen.io/steelwater/pen/BjeZQx -->
+          <div class="form-group">
+            <label for="sources">Source:</label>
+            <div class="sources-selector" id="sources">
+              <input type="checkbox" [formControl]="form.controls['animal']" id="an" class="source" />
+              <label for="an">Animal</label>
+              <input type="checkbox" [formControl]="form.controls['vegetable']" id="ve" class="source" />
+              <label for="ve">Vegetable</label>
+              <input type="checkbox" [formControl]="form.controls['mineral']" id="mi" class="source" />
+              <label for="mi">Mineral</label>
+            </div>
           </div>
 
           <div class="form-group">

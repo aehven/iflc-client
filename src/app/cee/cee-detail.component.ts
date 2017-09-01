@@ -33,7 +33,6 @@ export class CeeDetailComponent implements OnInit {
   public timerSubscription;
 
   public ceeStates;
-  public ceeSources;
 
   public imagePath: string;
 
@@ -47,7 +46,9 @@ export class CeeDetailComponent implements OnInit {
                 this.form = fb.group({
                   'name' : [null, Validators.required],
                   'state' : null,
-                  'source' : null
+                  'animal' : null,
+                  'vegetable': null,
+                  'mineral': null
                 })
               }
 
@@ -56,7 +57,6 @@ export class CeeDetailComponent implements OnInit {
     document.getElementById('top').scrollIntoView(true)
     localStorage.setItem('location', this.location.path());
     this.ceeStates = localStorage.getItem('ceeStates').split(',');
-    this.ceeSources = localStorage.getItem('ceeSources').split(',');
   }
 
   getCee():void {
@@ -116,12 +116,17 @@ export class CeeDetailComponent implements OnInit {
     let timer = Observable.timer(100,100);
     this.timerSubscription = timer.subscribe(t => {
       var stateSelect = document.getElementById("stateSelect");
-      var sourceSelect = document.getElementById("sourceSelect");
       if(stateSelect) {
         this.timerSubscription.unsubscribe();
         stateSelect.removeAttribute("disabled");
-        sourceSelect.removeAttribute("disabled");
       }
+
+      var x = document.getElementsByClassName("source");
+      var i;
+      for (i = 0; i < x.length; i++) {
+          x[i].removeAttribute("disabled");
+      }
+
     });
   }
 
@@ -131,12 +136,17 @@ export class CeeDetailComponent implements OnInit {
       let timer = Observable.timer(100,100);
       this.timerSubscription = timer.subscribe(t => {
         var stateSelect = document.getElementById("stateSelect");
-        var sourceSelect = document.getElementById("sourceSelect");
         if(stateSelect) {
           this.timerSubscription.unsubscribe();
           stateSelect.setAttribute("disabled", "disabled");
-          sourceSelect.setAttribute("disabled", "disabled");
         }
+
+        var x = document.getElementsByClassName("source");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].setAttribute("disabled", "disabled");
+        }
+
       });
     });
   }

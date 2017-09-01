@@ -102,7 +102,6 @@ export class CeeListComponent implements OnInit {
           this.data = json.cees;
           this.collectionSize = json.count;
           localStorage.setItem('ceeStates', json.states);
-          localStorage.setItem('ceeSources', json.sources);
         }
       },
       error => {
