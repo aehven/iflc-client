@@ -17,8 +17,6 @@ import { DataService } from '../data.service';
 })
 export class FlavorListComponent implements OnInit {
   public data;
-  public sortBy = "email";
-  public sortOrder = "asc";
 
   public search = null;
   public searchControl = new FormControl();

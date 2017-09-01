@@ -42,24 +42,8 @@ export class FlavorDetailComponent implements AfterViewInit {
               public notificationsService: NotificationsService,
               fb: FormBuilder) {
                 this.form = fb.group({
-                  'first_name' : [null, Validators.required],
-                  'last_name' : [null, Validators.required],
-                  'ma' : null,
-                  'phone' : null,
-                  'cellphone': null,
-                  'email' :  null,
-                  'street' : null,
-                  'city' : null,
-                  'state' : null,
-                  'zip' : null,
-                  'kind' : null,
-                  'sunday': null,
-                  'monday': null,
-                  'tuesday': null,
-                  'wednesday': null,
-                  'thursday': null,
-                  'friday': null,
-                  'saturday': null
+                  'name' : [null, Validators.required],
+                  'color' : [null, Validators.required]
                 })
               }
 
@@ -74,15 +58,6 @@ export class FlavorDetailComponent implements AfterViewInit {
       this.id = params['id'];
       if(this.id == "new") {
         this.enableForm();
-        this.form.patchValue({
-          phone: this.dataService.current['cee'].phone,
-          email: this.dataService.current['cee'].email,
-          street: this.dataService.current['cee'].street,
-          city: this.dataService.current['cee'].city,
-          state: this.dataService.current['cee'].state,
-          zip: this.dataService.current['cee'].zip,
-          kind: this.dataService.current['cee'].kind
-        });
       }
       else {
         this.disableForm();
@@ -91,42 +66,8 @@ export class FlavorDetailComponent implements AfterViewInit {
         .subscribe( data => {
           this.form.patchValue(this.dataService.current["flavor"]);
 
-          console.log("first_name: [" + this.form.controls['first_name'].value + "]");
-          console.log("phone: [" + this.form.controls['phone'].value + "]");
-
           this.flavor = data.json();
-
-          this.getCee();
         })
-      }
-    })
-  }
-
-  getCee(): void {
-    this.dataService.show("cee", this.flavor.cee_id)
-    .subscribe( data => {
-      if(!this.flavor['phone']) {
-        this.form.controls['phone'].setValue(this.dataService.current['cee'].phone);
-      }
-
-      if(!this.flavor['street']) {
-        this.form.controls['street'].setValue(this.dataService.current['cee'].street);
-      }
-
-      if(!this.flavor['city']) {
-        this.form.controls['city'].setValue(this.dataService.current['cee'].city);
-      }
-
-      if(!this.flavor['zip']) {
-        this.form.controls['zip'].setValue(this.dataService.current['cee'].zip);
-      }
-
-      if(!this.flavor['state']) {
-        this.form.controls['state'].setValue(this.dataService.current['cee'].state);
-      }
-
-      if(!this.flavor['kind']) {
-        this.form.controls['kind'].setValue(this.dataService.current['cee'].kind);
       }
     })
   }
@@ -170,40 +111,12 @@ export class FlavorDetailComponent implements AfterViewInit {
 
   enableForm(): void {
     this.isReadOnly = false;
-    let timer = Observable.timer(100,100);
-    this.timerSubscription = timer.subscribe(t => {
-      var kindSelect = document.getElementById("kindSelect");
-      if(kindSelect) {
-        this.timerSubscription.unsubscribe();
-        kindSelect.removeAttribute("disabled");
-      }
-
-      var x = document.getElementsByClassName("weekday");
-      var i;
-      for (i = 0; i < x.length; i++) {
-          x[i].removeAttribute("disabled");
-      }
-    });
   }
 
   disableForm(): void {
     this.route.params.subscribe(params => {
       this.isReadOnly = true;
       let timer = Observable.timer(100,100);
-      this.timerSubscription = timer.subscribe(t => {
-        var kindSelect = document.getElementById("kindSelect");
-        if(kindSelect) {
-          this.timerSubscription.unsubscribe();
-          kindSelect.setAttribute("disabled", "disabled");
-        }
-
-        var x = document.getElementsByClassName("weekday");
-        var i;
-        for (i = 0; i < x.length; i++) {
-            x[i].setAttribute("disabled", "disabled");
-        }
-
-      });
     });
   }
 }

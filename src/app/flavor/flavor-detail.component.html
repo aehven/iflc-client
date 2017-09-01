@@ -3,91 +3,21 @@
     <div class="col-xs-12 col-sm-8 col-md-7 col-lg-6">
       <div class="card">
         <div id="flavor-name" class="card-block flavor" [ngStyle]="{'min-height.px': 66}">
-          {{form.controls['first_name'].value}} {{form.controls['last_name'].value}} <br />
+          {{form.controls['name'].value}} {{form.controls['color'].value}} <br />
           <a id="cee-link" class="card-link" routerLink="/cee/{{dataService.current['cee']?.id}}">{{dataService.current['cee']?.name}}</a>
         </div>
       </div>
       <div class="card card-block">
         <form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
-          <div *ngIf="!isReadOnly" class="form-group" [ngClass]="{'has-error':!form.controls['first_name'].valid && form.controls['first_name'].touched}">
-            <label>First name:</label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='first_name'>
-            <div *ngIf="form.controls['first_name'].hasError('required') && form.controls['first_name'].touched" class="error">First name is required.</div>
+          <div *ngIf="!isReadOnly" class="form-group" [ngClass]="{'has-error':!form.controls['name'].valid && form.controls['name'].touched}">
+            <label>Name:</label>
+            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='name'>
+            <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="error">First name is required.</div>
           </div>
-          <div *ngIf="!isReadOnly" class="form-group" [ngClass]="{'has-error':!form.controls['last_name'].valid && form.controls['last_name'].touched}">
-            <label>Last name:</label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='last_name'>
-            <div *ngIf="form.controls['last_name'].hasError('required') && form.controls['first_name'].touched" class="error">Last name is required.</div>
-          </div>
-
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['ma'].valid && form.controls['ma'].touched}">
-            <label>MA</label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='ma'>
-          </div>
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['phone'].valid && form.controls['phone'].touched}">
-            <label><a href="tel:{{dataService.current['flavor']?.phone}}"><i class="fa fa-phone" aria-hidden="true"></i> Phone:</a></label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='phone'>
-          </div>
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['cellphone'].valid && form.controls['cellphone'].touched}">
-            <label><a href="tel:{{dataService.current['flavor']?.cellphone}}"><i class="fa fa-mobile-phone" aria-hidden="true"></i> Cell Phone:</a></label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='cellphone'>
-          </div>
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['email'].valid && form.controls['email'].touched}">
-            <label><a href="mailto:{{dataService.current['flavor']?.email}}" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Email:</a></label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='email'>
-          </div>
-
-          <!-- Thanks to http://codepen.io/steelwater/pen/BjeZQx -->
-          <div class="form-group">
-            <label for="days">Days in:</label>
-            <div class="weekDays-selector" id="days">
-              <input type="checkbox" [formControl]="form.controls['sunday']" id="su" class="weekday" />
-              <label for="su">Su</label>
-              <input type="checkbox" [formControl]="form.controls['monday']" id="mo" class="weekday" />
-              <label for="mo">Mo</label>
-              <input type="checkbox" [formControl]="form.controls['tuesday']" id="tu" class="weekday" />
-              <label for="tu">Tu</label>
-              <input type="checkbox" [formControl]="form.controls['wednesday']" id="we" class="weekday" />
-              <label for="we">We</label>
-              <input type="checkbox" [formControl]="form.controls['thursday']" id="th" class="weekday" />
-              <label for="th">Th</label>
-              <input type="checkbox" [formControl]="form.controls['friday']" id="fr" class="weekday" />
-              <label for="fr">Fr</label>
-              <input type="checkbox" [formControl]="form.controls['saturday']" id="sa" class="weekday" />
-              <label for="sa">Sa</label>
-            </div>
-          </div>
-
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['street'].valid && form.controls['street'].touched}">
-            <label><a href="" (click)="openMap()"><i class="fa fa-map-marker" aria-hidden="true"></i> Street:</a></label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='street'>
-          </div>
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['city'].valid && form.controls['city'].touched}">
-            <label>City:</label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='city'>
-          </div>
-          <!-- <div class="form-group" [ngClass]="{'has-error':!form.controls['state'].valid && form.controls['state'].touched}">
-            <label>State:</label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" [formControl]="form.controls['state']">
-          </div> -->
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['zip'].valid && form.controls['zip'].touched}">
-            <label>Zip:</label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='zip'>
-          </div>
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['kind'].valid && form.controls['role'].touched}">
-            <label>Type:</label>
-            <select id="kindSelect" formControlName="kind" class="form-control input-lg">
-              <option value="Orthopedic">Orthopedic</option>
-              <option value="FamilyPractice">Family Practice</option>
-              <option value="Podiatrist">Podiatrist</option>
-              <option value="Pediatrician">Pediatrician</option>
-              <option value="Neurologist">Neurologist</option>
-              <option value="Rheumatologist">Rheumatologist</option>
-              <option value="GeneralSurgery">General Surgery</option>
-              <option value="OcMed">Oc Med</option>
-              <option value="SpineSpecialist">Spine Specialist</option>
-              <option value="Other">Other</option>
-            </select>
+          <div *ngIf="!isReadOnly" class="form-group" [ngClass]="{'has-error':!form.controls['color'].valid && form.controls['color'].touched}">
+            <label>Color:</label>
+            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='color'>
+            <div *ngIf="form.controls['color'].hasError('required') && form.controls['name'].touched" class="error">Last name is required.</div>
           </div>
 
           <div class="form-group">
