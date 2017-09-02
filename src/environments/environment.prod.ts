@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  apiPath: "https://webapp.herokuapp.com"
+  apiPath: "https://iflc-production.herokuapp.com",
+  demoUser: "a2@null.com",
+  demoPassword: "password"
 };
