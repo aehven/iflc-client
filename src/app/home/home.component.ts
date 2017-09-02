@@ -13,7 +13,8 @@ export class HomeComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     document.getElementById('home').scrollIntoView(true);
-    this.router.navigate([localStorage.getItem('location')]);
+    // this.router.navigate([localStorage.getItem('location')]);
+    this.cees();
   }
 
   cees(): void {
