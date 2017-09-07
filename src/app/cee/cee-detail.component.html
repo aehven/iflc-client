@@ -38,7 +38,13 @@
             </div>
           </div>
 
-          <image-upload *ngIf="!isReadOnly"></image-upload>
+          <image-upload
+            *ngIf="!isReadOnly"
+            [buttonCaption]="'Select an image'"
+            [dropBoxMessage]="'Drop an image here.'"
+            (onFileUploadFinish)="imageUploaded($event)"
+          >
+          </image-upload>
 
           <div class="form-group">
             <button

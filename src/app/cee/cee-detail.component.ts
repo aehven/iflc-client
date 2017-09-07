@@ -150,4 +150,8 @@ export class CeeDetailComponent implements OnInit {
       });
     });
   }
+
+  imageUploaded(event): void {
+    console.log(event.file);
+  }
 }
