@@ -10,6 +10,7 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { Angular2TokenService } from 'angular2-token';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { Autosize } from 'angular2-autosize/angular2-autosize';
+import { ImageUploadModule } from "angular2-image-upload"; 
 
 import { AppComponent } from './app.component';
 
@@ -75,7 +76,8 @@ const appRoutes: Routes = [
       confirmButtonType: 'danger',
       placement: 'top'
     }),
-    SimpleNotificationsModule.forRoot()
+    SimpleNotificationsModule.forRoot(),
+    ImageUploadModule.forRoot()
   ],
   providers: [
       Angular2TokenService,

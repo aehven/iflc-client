@@ -38,6 +38,8 @@
             </div>
           </div>
 
+          <image-upload *ngIf="!isReadOnly"></image-upload>
+
           <div class="form-group">
             <button
               *ngIf="!isReadOnly"
