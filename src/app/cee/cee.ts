@@ -5,6 +5,7 @@ export class Cee {
   animal: boolean;
   vegetable: boolean;
   mineral: boolean;
+  image: File;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);

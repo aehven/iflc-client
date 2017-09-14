@@ -48,7 +48,8 @@ export class CeeDetailComponent implements OnInit {
                   'state' : null,
                   'animal' : null,
                   'vegetable': null,
-                  'mineral': null
+                  'mineral': null,
+                  'image': null
                 })
               }
 
@@ -153,5 +154,14 @@ export class CeeDetailComponent implements OnInit {
 
   imageUploaded(event): void {
     console.log(event.file);
+
+    var reader  = new FileReader();
+    var form = this.form;
+
+    reader.addEventListener("load", function () {
+      form.patchValue({image: reader.result});
+    }, false);
+
+    var data = reader.readAsDataURL(event.file);
   }
 }

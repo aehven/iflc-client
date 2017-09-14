@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="card card-block">
-          <form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
+        <form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
           <div *ngIf="!isReadOnly" class="form-group" [ngClass]="{'has-error':!form.controls['name'].valid && form.controls['name'].touched}">
             <label>Name:</label>
             <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='name'>
