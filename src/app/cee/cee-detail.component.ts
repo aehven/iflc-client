@@ -96,7 +96,8 @@ export class CeeDetailComponent implements OnInit {
     else {
       this.dataService.update("cee", this.id, values).subscribe(
         res =>      {
-          this.disableForm();
+          // this.disableForm();
+          this.getCee();
         }
       );
     }
