@@ -71,17 +71,20 @@ export class CeeDetailComponent implements OnInit {
         .subscribe( data => {
           this.form.patchValue(this.dataService.current["cee"]);
           this.disableForm();
-
-          var dbImage = this.dataService.current["cee"].image;
-          if(dbImage) {
-            this.imagePath = this.dataService.current["cee"].image
-          }
-          else {
-            this.imagePath = "/assets/background-" + this.dataService.current["cee"].name.toLowerCase() + ".jpg";
-          }
+          this.setBackground();
         })
       }
     })
+  }
+
+  setBackground(): void {
+    var dbImage = this.dataService.current["cee"].image;
+    if(dbImage) {
+      this.imagePath = this.dataService.current["cee"].image
+    }
+    else {
+      this.imagePath = "/assets/background-" + this.dataService.current["cee"].name.toLowerCase() + ".jpg";
+    }
   }
 
   submitForm(values): void {
@@ -97,6 +100,7 @@ export class CeeDetailComponent implements OnInit {
       this.dataService.update("cee", this.id, values).subscribe(
         res =>      {
           // this.disableForm();
+          // this.setBackground();
           this.getCee();
         }
       );
@@ -164,12 +168,13 @@ export class CeeDetailComponent implements OnInit {
     console.log(event.file);
 
     var reader  = new FileReader();
-    var form = this.form;
+    var comp = this;
 
     reader.addEventListener("load", function () {
-      form.patchValue({image: reader.result});
+      comp.form.patchValue({image: reader.result});
+      // comp.imagePath = reader.result;
     }, false);
 
-    var data = reader.readAsDataURL(event.file);
+    reader.readAsDataURL(event.file);
   }
 }
