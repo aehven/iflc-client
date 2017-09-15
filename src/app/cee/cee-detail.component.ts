@@ -146,6 +146,7 @@ export class CeeDetailComponent implements OnInit {
   disableForm(): void {
     this.route.params.subscribe(params => {
       this.isReadOnly = true;
+      this.setBackground();
       let timer = Observable.timer(100,100);
       this.timerSubscription = timer.subscribe(t => {
         var stateSelect = document.getElementById("stateSelect");
@@ -172,7 +173,7 @@ export class CeeDetailComponent implements OnInit {
 
     reader.addEventListener("load", function () {
       comp.form.patchValue({image: reader.result});
-      // comp.imagePath = reader.result;
+      comp.imagePath = reader.result;
     }, false);
 
     reader.readAsDataURL(event.file);
