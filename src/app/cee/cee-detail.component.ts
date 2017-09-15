@@ -178,4 +178,8 @@ export class CeeDetailComponent implements OnInit {
 
     reader.readAsDataURL(event.file);
   }
+
+  imageRemoved($event): void {
+    this.setBackground();
+  }
 }

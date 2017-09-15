@@ -43,6 +43,7 @@
             [buttonCaption]="'Select an image'"
             [dropBoxMessage]="'Drop an image here.'"
             (onFileUploadFinish)="imageUploaded($event)"
+            (onRemove)="imageRemoved($event)"
           >
           </image-upload>
 
