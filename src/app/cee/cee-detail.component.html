@@ -39,13 +39,15 @@
           </div>
 
           <image-upload
+            style="text-transform: capitalize"
             *ngIf="!isReadOnly"
             [buttonCaption]="'Select an image'"
-            [dropBoxMessage]="'Drop an image here.'"
+            [dropBoxMessage]="'or drop one here'"
+            [preview]="false"
             (onFileUploadFinish)="imageUploaded($event)"
             (onRemove)="imageRemoved($event)"
           >
-          </image-upload>
+          </image-upload> <br />
 
           <div class="form-group">
             <button
