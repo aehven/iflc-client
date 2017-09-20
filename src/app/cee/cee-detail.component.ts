@@ -78,13 +78,7 @@ export class CeeDetailComponent implements OnInit {
   }
 
   setBackground(): void {
-    var dbImage = this.dataService.current["cee"].image;
-    if(dbImage) {
-      this.imagePath = this.dataService.current["cee"].image
-    }
-    else {
-      this.imagePath = "/assets/background-" + this.dataService.current["cee"].name.toLowerCase() + ".jpg";
-    }
+    this.imagePath = this.dataService.current["cee"].image;
   }
 
   submitForm(values): void {
