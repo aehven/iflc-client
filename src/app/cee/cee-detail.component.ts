@@ -78,7 +78,7 @@ export class CeeDetailComponent implements OnInit {
   }
 
   setBackground(): void {
-    this.imagePath = this.dataService.current["cee"].image;
+    this.imagePath = this.dataService.current["cee"].image_url;
   }
 
   submitForm(values): void {
