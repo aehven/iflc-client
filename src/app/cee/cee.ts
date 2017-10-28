@@ -5,7 +5,7 @@ export class Cee {
   animal: boolean;
   vegetable: boolean;
   mineral: boolean;
-  image: File;
+  image: HTMLImageElement;
   image_url: string;
 
   constructor(values: Object = {}) {
