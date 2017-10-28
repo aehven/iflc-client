@@ -10,7 +10,7 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { Angular2TokenService } from 'angular2-token';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { Autosize } from 'angular2-autosize/angular2-autosize';
-import { ImageUploadModule } from "angular2-image-upload"; 
+import { ImageUploadModule } from "angular2-image-upload";
 
 import { AppComponent } from './app.component';
 
@@ -29,6 +29,8 @@ import { HomeComponent } from './home/home.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { NoteListComponent } from './note/note-list.component';
 import { NoteDetailComponent } from './note/note-detail.component';
+
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 const appRoutes: Routes = [
   { path: 'user/:id', component: UserDetailComponent, canActivate: [AuthGuardService] },
@@ -77,7 +79,8 @@ const appRoutes: Routes = [
       placement: 'top'
     }),
     SimpleNotificationsModule.forRoot(),
-    ImageUploadModule.forRoot()
+    ImageUploadModule.forRoot(),
+    MatButtonModule, MatCheckboxModule
   ],
   providers: [
       Angular2TokenService,
