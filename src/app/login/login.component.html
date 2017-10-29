@@ -1,26 +1,26 @@
 <div class="background-image" background-image="{{imagePath}}"></div>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-8 col-sm-7 col-md-4 col-lg-3">
-      <div class="jumbotron">
-        <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
-          <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
-            <label id="email-label">Email:</label>
-            <input name='email' class="form-control" type="text" [formControl]="complexForm.controls['email']">
-            <div *ngIf="complexForm.controls['email'].hasError('required') && complexForm.controls['email'].touched" class="alert alert-danger">Email is required.</div>
+<div layout="column" layout-align="center center">
+  <div flex=20>1</div>
+  <div flex>
+    <mat-card>
+      <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
+          <label id="email-label">Email:</label>
+          <input name='email' class="form-control" type="text" [formControl]="complexForm.controls['email']">
+          <div *ngIf="complexForm.controls['email'].hasError('required') && complexForm.controls['email'].touched" class="alert alert-danger">Email is required.</div>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid && complexForm.controls['password'].touched}">
+          <label id="password-label">Password:</label>
+          <input name='password' class="form-control" type="password" [formControl]="complexForm.controls['password']">
+          <div *ngIf="complexForm.controls['password'].hasError('required') && complexForm.controls['password'].touched" class="alert alert-danger">password is required.</div>
+        </div>
+        <div class="form-group">
+          <div class="row justify-content-center">
+            <button mat-button mat-icon-button mat-raised-button color=primary><i class="material-icons">forward</i></button>
           </div>
-          <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid && complexForm.controls['password'].touched}">
-            <label id="password-label">Password:</label>
-            <input name='password' class="form-control" type="password" [formControl]="complexForm.controls['password']">
-            <div *ngIf="complexForm.controls['password'].hasError('required') && complexForm.controls['password'].touched" class="alert alert-danger">password is required.</div>
-          </div>
-          <div class="form-group">
-            <div class="row justify-content-center">
-              <button mat-button mat-icon-button mat-raised-button color=primary><i class="material-icons">forward</i></button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
+      </form>
+    </mat-card>
   </div>
+  <div flex>3</div>
 </div>

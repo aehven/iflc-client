@@ -30,7 +30,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { NoteListComponent } from './note/note-list.component';
 import { NoteDetailComponent } from './note/note-detail.component';
 
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatCardModule} from '@angular/material';
 
 const appRoutes: Routes = [
   { path: 'user/:id', component: UserDetailComponent, canActivate: [AuthGuardService] },
@@ -80,7 +80,7 @@ const appRoutes: Routes = [
     }),
     SimpleNotificationsModule.forRoot(),
     ImageUploadModule.forRoot(),
-    MatButtonModule, MatCheckboxModule
+    MatButtonModule, MatCheckboxModule, MatCardModule
   ],
   providers: [
       Angular2TokenService,
