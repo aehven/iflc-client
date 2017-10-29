@@ -19,7 +19,7 @@
 
 .sources-selector input[type=checkbox] + label {
   display: inline-block;
-  border-radius: 0.25rem;
+  border-radius: 2px;
   background: #dddddd;
   width: 6rem;
   line-height: 2rem;
