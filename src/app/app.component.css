@@ -15,3 +15,7 @@
 .flavor a {
   color: lightblue;
 }
+
+.mat-card.translucent {
+  opacity: 0.8;
+}

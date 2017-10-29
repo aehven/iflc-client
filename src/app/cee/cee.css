@@ -51,3 +51,11 @@
 .example-full-width {
   width: 100%;
 }
+
+.mat-card-title.cee {
+  padding: 2rem;
+  margin-bottom: 0px;
+}
+.mat-card-subtitle.cee {
+  padding: 0.5rem 2rem;
+}

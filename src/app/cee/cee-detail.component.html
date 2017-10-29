@@ -1,94 +1,94 @@
 <div class="background-image" background-image="{{imagePath}}"></div>
-<div id="top" class="container">
-  <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-8 col-md-7 col-lg-6">
-      <div class="card">
-        <div class="card-block cee" [ngStyle]="{'min-height.px': 66}">
-          <favorite [favoritableId]="id" style="float:right; margin-top: -1em; margin-right: -0.7em"></favorite>
-          <span id='cee-name'>{{form.controls['name'].value}}</span> <br />
-          <a id='flavors-link' class="card-link" routerLink="/flavors/{{dataService.current['cee']?.id}}">Flavors</a>
-          <a id='notes-link' class="card-link" routerLink="/notes/{{dataService.current['cee']?.id}}">Notes</a>
+<div class="flex-container"
+     fxLayout="row"
+     fxLayoutAlign="center">
+  <div class="flex-item" fxFlex="40rem">
+    <mat-card class="translucent">
+      <mat-card-title class="cee">
+        <favorite [favoritableId]="id" style="float:right; margin-top: -1em; margin-right: -0.7em"></favorite>
+        <span id='cee-name'>{{form.controls['name'].value}}</span> <br />
+      </mat-card-title>
+      <mat-card-subtitle class="cee">
+        <a id='flavors-link' class="card-link" routerLink="/flavors/{{dataService.current['cee']?.id}}">Flavors</a>
+        <a id='notes-link' class="card-link" routerLink="/notes/{{dataService.current['cee']?.id}}">Notes</a>
+      </mat-card-subtitle>
+      <form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
+        <div *ngIf="!isReadOnly" class="form-group" [ngClass]="{'has-error':!form.controls['name'].valid && form.controls['name'].touched}">
+          <label>Name:</label>
+          <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='name'>
+          <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="error">Name is required.</div>
         </div>
-      </div>
-      <div class="card card-block">
-        <form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
-          <div *ngIf="!isReadOnly" class="form-group" [ngClass]="{'has-error':!form.controls['name'].valid && form.controls['name'].touched}">
-            <label>Name:</label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" formControlName='name'>
-            <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="error">Name is required.</div>
-          </div>
 
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['state'].valid && form.controls['state'].touched}">
-            <label>State:</label>
-            <select id="stateSelect" formControlName="state" class="form-control input-lg">
-              <option *ngFor="let state of ceeStates" [ngValue]="state">{{state}}</option>
-            </select>
-          </div>
+        <div class="form-group" [ngClass]="{'has-error':!form.controls['state'].valid && form.controls['state'].touched}">
+          <label>State:</label>
+          <select id="stateSelect" formControlName="state" class="form-control input-lg">
+            <option *ngFor="let state of ceeStates" [ngValue]="state">{{state}}</option>
+          </select>
+        </div>
 
-          <!-- Thanks to http://codepen.io/steelwater/pen/BjeZQx -->
-          <div class="form-group">
-            <label for="sources">Source:</label>
-            <div class="sources-selector" id="sources">
-              <input type="checkbox" [formControl]="form.controls['animal']" id="an" class="source" />
-              <label for="an">Animal</label>
-              <input type="checkbox" [formControl]="form.controls['vegetable']" id="ve" class="source" />
-              <label for="ve">Vegetable</label>
-              <input type="checkbox" [formControl]="form.controls['mineral']" id="mi" class="source" />
-              <label for="mi">Mineral</label>
-            </div>
+        <!-- Thanks to http://codepen.io/steelwater/pen/BjeZQx -->
+        <div class="form-group">
+          <label for="sources">Source:</label>
+          <div class="sources-selector" id="sources">
+            <input type="checkbox" [formControl]="form.controls['animal']" id="an" class="source" />
+            <label for="an">Animal</label>
+            <input type="checkbox" [formControl]="form.controls['vegetable']" id="ve" class="source" />
+            <label for="ve">Vegetable</label>
+            <input type="checkbox" [formControl]="form.controls['mineral']" id="mi" class="source" />
+            <label for="mi">Mineral</label>
           </div>
+        </div>
 
-          <image-upload
-            style="text-transform: capitalize"
+        <image-upload
+          style="text-transform: capitalize"
+          *ngIf="!isReadOnly"
+          [buttonCaption]="'Select an image'"
+          [dropBoxMessage]="'or drop one here'"
+          [preview]="false"
+          (onFileUploadFinish)="imageUploaded($event)"
+          (onRemove)="imageRemoved($event)"
+        >
+        </image-upload> <br />
+
+        <div class="form-group">
+          <button
             *ngIf="!isReadOnly"
-            [buttonCaption]="'Select an image'"
-            [dropBoxMessage]="'or drop one here'"
-            [preview]="false"
-            (onFileUploadFinish)="imageUploaded($event)"
-            (onRemove)="imageRemoved($event)"
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!form.valid"
           >
-          </image-upload> <br />
+            Submit
+          </button>
 
-          <div class="form-group">
-            <button
-              *ngIf="!isReadOnly"
-              type="submit"
-              class="btn btn-primary"
-              [disabled]="!form.valid"
-            >
-              Submit
-            </button>
+          <button
+            *ngIf="isReadOnly"
+            class="btn btn-primary"
+            (click)="enableForm()"
+          >
+            Edit
+          </button>
 
-            <button
-              *ngIf="isReadOnly"
-              class="btn btn-primary"
-              (click)="enableForm()"
-            >
-              Edit
-            </button>
+          <button
+            *ngIf="!isReadOnly"
+            class="btn btn-primary"
+            (click)="disableForm()"
+          >
+            Cancel
+          </button>
 
-            <button
-              *ngIf="!isReadOnly"
-              class="btn btn-primary"
-              (click)="disableForm()"
-            >
-              Cancel
-            </button>
-
-            <a
-              href=""
-              *ngIf="isReadOnly && tokenService && tokenService.currentUserData && tokenService.currentUserData['role'] == 'admin'"
-              class="btn btn-danger"
-              mwlConfirmationPopover
-              [title]="title"
-              (confirm)="delete()"
-              (click)="false;"
-            >
-              Delete
-            </a>
-          </div>
-        </form>
-      </div>
-    </div>
+          <a
+            href=""
+            *ngIf="isReadOnly && tokenService && tokenService.currentUserData && tokenService.currentUserData['role'] == 'admin'"
+            class="btn btn-danger"
+            mwlConfirmationPopover
+            [title]="title"
+            (confirm)="delete()"
+            (click)="false;"
+          >
+            Delete
+          </a>
+        </div>
+      </form>
+    </mat-card>
   </div>
 </div>
