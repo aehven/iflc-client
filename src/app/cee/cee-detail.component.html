@@ -19,6 +19,12 @@
           <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="error">Name is required.</div>
         </div>
 
+        <!-- <mat-form-field>
+          <mat-select placeholder="State">
+            <mat-option *ngFor="let state of ceeStates" [value]="state">{{state}}</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+
         <div class="form-group" [ngClass]="{'has-error':!form.controls['state'].valid && form.controls['state'].touched}">
           <label>State:</label>
           <select id="stateSelect" formControlName="state" class="form-control input-lg">
