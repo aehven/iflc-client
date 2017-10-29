@@ -31,6 +31,7 @@ import { NoteListComponent } from './note/note-list.component';
 import { NoteDetailComponent } from './note/note-detail.component';
 
 import {MatButtonModule, MatCheckboxModule, MatCardModule} from '@angular/material';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 const appRoutes: Routes = [
   { path: 'user/:id', component: UserDetailComponent, canActivate: [AuthGuardService] },
@@ -80,6 +81,7 @@ const appRoutes: Routes = [
     }),
     SimpleNotificationsModule.forRoot(),
     ImageUploadModule.forRoot(),
+    FlexLayoutModule,
     MatButtonModule, MatCheckboxModule, MatCardModule
   ],
   providers: [
