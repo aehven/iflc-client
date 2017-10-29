@@ -108,13 +108,19 @@ export class DataService {
     return res;
   }
 
+  replacer(key, value): any
+  {
+      if (key=="image") return undefined;
+      else return value;
+  }
+
   log_response(method, res): void {
     console.log("currentUserData: " + JSON.stringify(this.tokenService.currentUserData));
     res.subscribe(
       res => {
         console.log("data service: " + method + ": " + res);
         try{
-          console.log("data service: \n" + JSON.stringify(res.json()));
+          console.log("data service: \n" + JSON.stringify(res.json(), this.replacer));
         } catch(error) {
           console.log("data service: " + res.text());
         }
