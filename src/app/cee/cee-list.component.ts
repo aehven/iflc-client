@@ -29,7 +29,7 @@ export class CeeListComponent implements OnInit {
 
   public collectionSize = 1;
   public page = 1;
-  public pageSize = 3;
+  public pageSize = 5;
   public exportExcel = false;
   public favoritesOnly = false;
 
@@ -113,7 +113,7 @@ export class CeeListComponent implements OnInit {
   }
 
   public favoritesOnlyChange(event): void {
-    this.favoritesOnly = event.target.checked;
+    this.favoritesOnly = event.checked;
     localStorage.setItem("favoritesOnly", JSON.stringify(this.favoritesOnly));
     this.getIndex();
   }

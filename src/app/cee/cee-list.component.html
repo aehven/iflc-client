@@ -6,9 +6,7 @@
         <button id="exportButton" mat-button mat-raised-button (click)="exportClick($event)" style="float:right">Export to Excel</button>
     </mat-card-title>
     <mat-card-subtitle>
-      <input id="favorites-only" type="checkbox" [checked]="favoritesOnly" (change)="favoritesOnlyChange($event)">
-      <label for="favorites-only">Show Favorites Only</label>
-
+      <mat-checkbox id="favorites-only" [checked]="favoritesOnly" (change)="favoritesOnlyChange($event)">Show Favorites Only</mat-checkbox>
       <div class="flex-container"
            fxLayout="row"
            fxLayoutAlign="space-between">
