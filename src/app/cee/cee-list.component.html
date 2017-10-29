@@ -3,33 +3,42 @@
   <mat-card>
     <mat-card-title>
       Cees <span style="font-size:60%">({{collectionSize}})</span>
-        <button id="exportButton" mat-button mat-raised-button (click)="exportClick($event)" style="float:right">Export to Excel</button>
     </mat-card-title>
+
     <mat-card-subtitle>
-      <mat-checkbox id="favorites-only" [checked]="favoritesOnly" (change)="favoritesOnlyChange($event)">Show Favorites Only</mat-checkbox>
       <div class="flex-container"
            fxLayout="row"
            fxLayoutAlign="space-between">
-        <div class="flex-item" fxFlex="20">
-          <button *ngIf="tokenService && tokenService.currentUserData && tokenService.currentUserData['role'] == 'admin'"
-            mat-button mat-raised-button routerLink="/cee/new">New Cee
-          </button>
+        <div class="flex-item" fxFlex>
+          <mat-checkbox id="favorites-only" [checked]="favoritesOnly" (change)="favoritesOnlyChange($event)">Show Favorites Only</mat-checkbox>
         </div>
-        <div class="flex-item" fxFlex=40>
+        <div class="flex-item" fxFlex>
           <input class="form-control" placeholder="Search" [(ngModel)]="search" [formControl]="searchControl"/>
+        </div>
+        <div class="flex-item" fxFlex>
+          <button id="exportButton" mat-button mat-raised-button (click)="exportClick($event)" style="float:right">Export to Excel</button>
+          <button *ngIf="tokenService && tokenService.currentUserData && tokenService.currentUserData['role'] == 'admin'"
+            mat-button mat-raised-button routerLink="/cee/new"
+            style="float:right">New Cee
+          </button>
         </div>
       </div>
     </mat-card-subtitle>
-      <mat-paginator [length]="collectionSize"
-                    [pageSize]="pageSize"
-                    [pageSizeOptions]="[5, 10, 25, 100]"
-                    (page)="pageChanged($event)">
-      </mat-paginator>
-
-      <div *ngFor="let item of data">
-        <mat-card class="list-card">
-          <a routerLink="/cee/{{item.id}}">{{item.name}}</a>
-        </mat-card>
+    <div class="flex-container"
+         fxLayout="row"
+         fxLayoutAlign="space-between">
+      <div class="flex-item" fxFlex>
+       <mat-paginator [length]="collectionSize"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="[5, 10, 25, 100]"
+                     (page)="pageChanged($event)">
+       </mat-paginator>
       </div>
+    </div>
+    <div *ngFor="let item of data">
+      <mat-card class="list-card">
+        <a routerLink="/cee/{{item.id}}">{{item.name}}</a>
+      </mat-card>
+    </div>
   </mat-card>
 </div>

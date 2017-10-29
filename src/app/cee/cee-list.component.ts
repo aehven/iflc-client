@@ -58,7 +58,7 @@ export class CeeListComponent implements OnInit {
   }
 
   public pageChanged(event) {
-    // event = {pageIndex: 1, pageSize: 5, length: 7}
+    // e.g. event = {pageIndex: 1, pageSize: 5, length: 7}
     this.page = event.pageIndex+1;
     this.pageSize = event.pageSize;
     this.getIndex();
