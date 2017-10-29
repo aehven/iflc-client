@@ -1,48 +1,46 @@
 <div class="background-image" background-image="{{imagePath}}"></div>
 <div class="container">
-  <div class="card cee" style="padding: 0.5em">
-    <div class="row">
-      <div class="col">
-        <h2>Cees <span style="font-size:60%">({{collectionSize}})</span>
-          <input type="button" id="exportButton" class="btn btn-secondary btn-sm hidden-sm-down" style="float:right" value="Export to Excel" (click)="exportClick($event)">
-        </h2>
-        <input id="favorites-only" type="checkbox" [checked]="favoritesOnly" (change)="favoritesOnlyChange($event)">
-        <label for="favorites-only">Show Favorites Only</label>
+  <mat-card>
+    <mat-card-title>
+      Cees <span style="font-size:60%">({{collectionSize}})</span>
+        <input type="button" id="exportButton" class="btn btn-secondary btn-sm hidden-sm-down" style="float:right" value="Export to Excel" (click)="exportClick($event)">
+    </mat-card-title>
+    <mat-card-subtitle>
+      <input id="favorites-only" type="checkbox" [checked]="favoritesOnly" (change)="favoritesOnlyChange($event)">
+      <label for="favorites-only">Show Favorites Only</label>
+
+      <div class="flex-container"
+           fxLayout="row"
+           fxLayoutAlign="space-between">
+        <div class="flex-item" fxFlex="20">
+          <a *ngIf="tokenService && tokenService.currentUserData && tokenService.currentUserData['role'] == 'admin'"
+            class="btn btn-primary"
+            routerLink="/cee/new">
+            New Cee
+          </a>
+        </div>
+        <div class="flex-item" fxFlex=40>
+          <input class="form-control" placeholder="Search" [(ngModel)]="search" [formControl]="searchControl"/>
+        </div>
       </div>
+    </mat-card-subtitle>
+    <div *ngIf="collectionSize > pageSize" class="card-footer">
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [pageSize]="pageSize"
+        [(page)]="page"
+        (pageChange)="pageChanged($event)"
+        [maxSize]=2
+        size="sm"
+        >
+      </ngb-pagination>
     </div>
-  </div>
-      <div class="card">
-        <div class="card-header">
-          <div class="row">
-            <div class="col-xs-auto">
-              <a *ngIf="tokenService && tokenService.currentUserData && tokenService.currentUserData['role'] == 'admin'"
-                      class="btn btn-primary"
-                      routerLink="/cee/new"                      >
-                      New Cee
-              </a>
-            </div>
-            <div class="col">
-              <input class="form-control" placeholder="Search" [(ngModel)]="search" [formControl]="searchControl"/>
-            </div>
-          </div>
-        </div>
-        <table class="table table-striped">
-          <tbody>
-            <tr *ngFor="let item of data">
-              <td><a routerLink="/cee/{{item.id}}">{{item.name}}</a></td>
-            </tr>
-          </tbody>
-        </table>
-        <div *ngIf="collectionSize > pageSize" class="card-footer">
-          <ngb-pagination
-            [collectionSize]="collectionSize"
-            [pageSize]="pageSize"
-            [(page)]="page"
-            (pageChange)="pageChanged($event)"
-            [maxSize]=2
-            size="sm"
-            >
-          </ngb-pagination>
-        </div>
-      </div>
+    <table class="table table-striped">
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td><a routerLink="/cee/{{item.id}}">{{item.name}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
 </div>
