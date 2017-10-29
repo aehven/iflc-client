@@ -3,7 +3,7 @@
   <mat-card>
     <mat-card-title>
       Cees <span style="font-size:60%">({{collectionSize}})</span>
-        <input type="button" id="exportButton" class="btn btn-secondary btn-sm hidden-sm-down" style="float:right" value="Export to Excel" (click)="exportClick($event)">
+        <button id="exportButton" mat-button mat-raised-button color=secondary (click)="exportClick($event)" style="float:right">Export to Excel</button>
     </mat-card-title>
     <mat-card-subtitle>
       <input id="favorites-only" type="checkbox" [checked]="favoritesOnly" (change)="favoritesOnlyChange($event)">
