@@ -14,6 +14,11 @@
         </div>
         <div class="flex-item" fxFlex>
           <input class="form-control" placeholder="Search" [(ngModel)]="search" [formControl]="searchControl"/>
+          <!-- <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Search" [(ngModel)]="search" [formControl]="searchControl">
+            </mat-form-field>
+          </form> -->
         </div>
         <div class="flex-item" fxFlex>
           <button id="exportButton" mat-button mat-raised-button (click)="exportClick($event)" style="float:right">Export to Excel</button>
