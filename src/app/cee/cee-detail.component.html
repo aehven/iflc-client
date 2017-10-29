@@ -54,7 +54,8 @@
           <button
             *ngIf="!isReadOnly"
             type="submit"
-            class="btn btn-primary"
+            mat-button mat-raised-button
+            color="primary"
             [disabled]="!form.valid"
           >
             Submit
@@ -62,7 +63,8 @@
 
           <button
             *ngIf="isReadOnly"
-            class="btn btn-primary"
+            mat-button mat-raised-button
+            color="primary"
             (click)="enableForm()"
           >
             Edit
@@ -70,7 +72,8 @@
 
           <button
             *ngIf="!isReadOnly"
-            class="btn btn-primary"
+            mat-button mat-raised-button
+            color="warn"
             (click)="disableForm()"
           >
             Cancel
@@ -79,7 +82,8 @@
           <a
             href=""
             *ngIf="isReadOnly && tokenService && tokenService.currentUserData && tokenService.currentUserData['role'] == 'admin'"
-            class="btn btn-danger"
+            mat-button mat-raised-button
+            color="warn"
             mwlConfirmationPopover
             [title]="title"
             (confirm)="delete()"
