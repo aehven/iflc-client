@@ -30,7 +30,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { NoteListComponent } from './note/note-list.component';
 import { NoteDetailComponent } from './note/note-detail.component';
 
-import {MatButtonModule, MatCheckboxModule, MatCardModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatCardModule, MatPaginatorModule} from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
 
 const appRoutes: Routes = [
@@ -82,7 +82,7 @@ const appRoutes: Routes = [
     SimpleNotificationsModule.forRoot(),
     ImageUploadModule.forRoot(),
     FlexLayoutModule,
-    MatButtonModule, MatCheckboxModule, MatCardModule
+    MatButtonModule, MatCheckboxModule, MatCardModule, MatPaginatorModule
   ],
   providers: [
       Angular2TokenService,
