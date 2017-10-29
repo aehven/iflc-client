@@ -55,7 +55,6 @@ export class CeeDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getCee();
-    document.getElementById('top').scrollIntoView(true)
     localStorage.setItem('location', this.location.path());
     this.ceeStates = localStorage.getItem('ceeStates').split(',');
   }
