@@ -3,7 +3,7 @@
      fxLayout="row"
      fxLayoutAlign="center">
   <div class="flex-item" fxFlex="20rem">
-    <mat-card>
+    <mat-card class="login">
       <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
         <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
           <label id="email-label">Email:</label>

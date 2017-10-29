@@ -36,9 +36,20 @@
       </ngb-pagination>
     </div>
       <div *ngFor="let item of data">
-        <mat-card>
+        <mat-card class="list-card">
           <a routerLink="/cee/{{item.id}}">{{item.name}}</a>
         </mat-card>
+      </div>
+      <div *ngIf="collectionSize > pageSize" class="card-footer">
+        <ngb-pagination
+          [collectionSize]="collectionSize"
+          [pageSize]="pageSize"
+          [(page)]="page"
+          (pageChange)="pageChanged($event)"
+          [maxSize]=2
+          size="sm"
+          >
+        </ngb-pagination>
       </div>
   </mat-card>
 </div>

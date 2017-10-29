@@ -29,7 +29,7 @@ export class CeeListComponent implements OnInit {
 
   public collectionSize = 1;
   public page = 1;
-  public pageSize = 15;
+  public pageSize = 3;
   public exportExcel = false;
   public favoritesOnly = false;
 
