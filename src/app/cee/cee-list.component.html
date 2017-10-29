@@ -35,12 +35,10 @@
         >
       </ngb-pagination>
     </div>
-    <table class="table table-striped">
-      <tbody>
-        <tr *ngFor="let item of data">
-          <td><a routerLink="/cee/{{item.id}}">{{item.name}}</a></td>
-        </tr>
-      </tbody>
-    </table>
+      <div *ngFor="let item of data">
+        <mat-card>
+          <a routerLink="/cee/{{item.id}}">{{item.name}}</a>
+        </mat-card>
+      </div>
   </mat-card>
 </div>
