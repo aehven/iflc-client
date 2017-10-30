@@ -121,11 +121,7 @@ export class CeeDetailComponent implements OnInit {
     this.isReadOnly = false;
     let timer = Observable.timer(100,100);
     this.timerSubscription = timer.subscribe(t => {
-      var stateSelect = document.getElementById("stateSelect");
-      if(stateSelect) {
-        this.timerSubscription.unsubscribe();
-        stateSelect.removeAttribute("disabled");
-      }
+      this.timerSubscription.unsubscribe();
 
       var x = document.getElementsByClassName("source");
       var i;
@@ -142,11 +138,7 @@ export class CeeDetailComponent implements OnInit {
       this.setBackground();
       let timer = Observable.timer(100,100);
       this.timerSubscription = timer.subscribe(t => {
-        var stateSelect = document.getElementById("stateSelect");
-        if(stateSelect) {
-          this.timerSubscription.unsubscribe();
-          stateSelect.setAttribute("disabled", "disabled");
-        }
+        this.timerSubscription.unsubscribe();
 
         var x = document.getElementsByClassName("source");
         var i;
